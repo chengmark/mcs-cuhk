@@ -22,3 +22,6 @@
 
 # send to server via socket
 # echo "say hi" > /run/minecraft.stdin
+
+#ssh
+#gcloud compute ssh --project=mc-cuhk-server --zone=asia-east2-a mc-server-v1

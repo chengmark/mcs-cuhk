@@ -33,8 +33,5 @@
   "devDependencies": {
     "eslint": "7",
     "eslint-config-next": "12.0.1"
-  },
-  "engines": {
-    "node": "14.x"
   }
 }

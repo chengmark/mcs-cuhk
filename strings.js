@@ -8,8 +8,9 @@ export default {
     startInstance: '撳呢到開ser',
     getIp: '撳呢到拎server IP',
     copiedIpToClipboard: 'Copy咗啦 直接Paste去Minecraft入ser啦',
-    autoStopInstance: 'Server冇online player ~10分鐘會自動熄',
-    viewSourceCode: '睇Source Code'
+    autoStopInstance: '冇online player ~10分鐘會自動熄',
+    viewSourceCode: '睇Source Code',
+    info: 'Server有咩問題請係TG講'
   },
   en: {
     googleBtn: 'View The Bill of the Server',
@@ -21,6 +22,7 @@ export default {
     getIp: 'Click here to copy server IP',
     copiedIpToClipboard: 'Server IP is copied, paste to your Minecraft client to enter.',
     autoStopInstance: 'Server will be closed if there are no online players for ~10 mins',
-    viewSourceCode: 'View source code'
+    viewSourceCode: 'View source code',
+    info: 'Please ask in TG if any problem occurs'
   }
 }

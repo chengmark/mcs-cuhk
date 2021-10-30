@@ -16,18 +16,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '15px',
     marginLeft: '15px',
     animation: `$blink 1000ms ${theme.transitions.easing.easeInOut} 200ms infinite`
-  },
-  grey: {
-    width: 10,
-    height: 10,
-    background: '#adb0bb',
-    borderRadius: '15px',
-    marginLeft: '15px'
-  },
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center'
   }
 }))
 
@@ -36,28 +24,54 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  grey: {
+    width: 10,
+    height: 10,
+    background: '#adb0bb',
+    borderRadius: '15px',
+    marginLeft: '15px'
+  },
+  red: {
+    width: 10,
+    height: 10,
+    background: 'red',
+    borderRadius: '15px',
+    marginLeft: '15px'
   }
 }
 
-const StatusIndicator = ({ onlinePlayers }) => {
+const StatusIndicator = ({ onlinePlayers, error }) => {
   const { getString } = useLocale()
   const classes = useStyles()
 
+  if (error) {
+    return (
+      <Box style={styles.wrapper}>
+        {error}
+        <div style={styles.red} />
+      </Box>
+    )
+  }
+
   return (
     <>
-      {onlinePlayers ? (
+      {onlinePlayers != null ? (
         <Box style={styles.wrapper}>
           Online Players: {onlinePlayers} / 20
           <div className={classes.blink} />
         </Box>
       ) : (
-        <Box className={classes.wrapper}>
+        <Box style={styles.wrapper}>
           Server Status: Offline
-          <div className={classes.grey}></div>
+          <div style={styles.grey}></div>
         </Box>
       )}
       <Typography variant="h6" color="#adb0bb">
         {getString('autoStopInstance')}
+      </Typography>
+      <Typography variant="h6" color="#adb0bb">
+        {getString('info')}
       </Typography>
     </>
   )

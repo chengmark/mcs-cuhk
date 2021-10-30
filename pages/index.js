@@ -34,12 +34,17 @@ const Home = ({ serverStatus, serverIp, clientId }) => {
   const classes = useStyles()
   const [loading, setLoading] = useState(false)
   const { isEng, getString, setIsEng } = useLocale()
-  const [onlinePlayers, setOnlinePlayers] = useState(0)
+  const [onlinePlayers, setOnlinePlayers] = useState(null)
+  const [error, setError] = useState(null)
   const { enqueueSnackbar } = useSnackbar()
 
   useEffect(() => {
-    // console.log({ serverStatus })
-    if (serverStatus.onlinePlayers) setOnlinePlayers(serverStatus.onlinePlayers)
+    console.log({ serverStatus })
+    if (serverStatus.error) {
+      setError(serverStatus.error)
+    } else if (Object.keys(serverStatus).length > 0) {
+      setOnlinePlayers(serverStatus.onlinePlayers)
+    }
   }, [])
 
   const startInstance = (ref) => {
@@ -87,8 +92,8 @@ const Home = ({ serverStatus, serverIp, clientId }) => {
           }}
         >
           <Typography variant="h2">CUHK Minecraft Survival Server</Typography>
-          <StatusIndicator onlinePlayers={onlinePlayers} />
-          {onlinePlayers ? (
+          <StatusIndicator onlinePlayers={onlinePlayers} error={error} />
+          {onlinePlayers != null ? (
             <CButton
               startIcon={<ContentCopyIcon />}
               onClick={copyIp}
@@ -131,7 +136,13 @@ const Home = ({ serverStatus, serverIp, clientId }) => {
 export default Home
 
 export async function getServerSideProps(context) {
-  const serverStatus = await mc.status(process.env.MC_SERVER_IP, { timeout: 7500 })
+  let serverStatus = {}
+  try {
+    serverStatus = await mc.status(process.env.MC_SERVER_IP, { timeout: 7500 })
+  } catch (e) {
+    if (e) serverStatus = { error: 'Failed to fetch server status' }
+  }
+
   // console.log(serverStatus)
 
   return {

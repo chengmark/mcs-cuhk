@@ -11,7 +11,7 @@ const Footer = () => {
     <footer>
       <Tooltip title={getString('viewSourceCode')}>
         <IconButton>
-          <Link href="https://github.com/chengmark/mc-cuhk-server/tree/web-deploy">
+          <Link href="https://github.com/chengmark/mcs-cuhk">
             <GitHubIcon />
           </Link>
         </IconButton>

@@ -16,6 +16,8 @@
 # pm2 for nodejs daemon management
 # pm2 monit index
 
+#gcloud auth login # for JWT expire error (backup not working)
+
 # --- interactions ---
 # view server log
 # sudo journalctl -u minecraft -f

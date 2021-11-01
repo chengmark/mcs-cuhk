@@ -1,0 +1,26 @@
+{
+  "name": "CUHK Minecraft Survival Server",
+  "short_name": "MCS CUHK",
+  "theme_color": "#282C34",
+  "background_color": "#282C34",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}

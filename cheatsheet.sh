@@ -16,6 +16,11 @@
 # pm2 for nodejs daemon management
 # pm2 monit index
 
+# pm2 add start script on boot
+# pm2 startup # and paste the command given
+# pm2 start script.js
+# pm2 save # save current process for startup use
+
 #gcloud auth login # for JWT expire error (backup not working)
 
 # --- interactions ---

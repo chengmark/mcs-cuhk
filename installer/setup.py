@@ -2,7 +2,7 @@ import subprocess
 import sys
 import json
 
-# python setup.py <args.json>
+# usage: python setup.py args.json
 
 
 def parse_args(setup_args_filename):
@@ -14,33 +14,29 @@ def parse_args(setup_args_filename):
     return links
 
 
-def agree_eula():
-    EULA_FILE = "eula.txt"
-    lines = open(EULA_FILE, 'r').readlines()
-    lines[-1] = "eula=true"
-    open(EULA_FILE, 'w').writelines(lines)
-
-
 def start_server(server_filename):
     subprocess.run(["java", "-jar", server_filename])
 
 
-def download(link, to="."):
-    output = to
-    if to == ".":
-        output = "./" + link.rsplit('/', 1)[-1]
-    subprocess.run(["wget", link, "-O", output])
+def download(link, to):
+    subprocess.run(["wget", link, "-O", to])
 
 
 def download_plugins(plugins):
     subprocess.run(["mkdir", "plugins"])
     for plugin in plugins.values():
-        download(plugin['link'], "./plugins/"+plugin['filename'])
+        download(plugin['link'], plugin['to'])
 
 
 def set_worlds(worlds):
     for world in worlds.values():
-        subprocess.run(["cp", "-R", world['path'], "./"+world['name']])
+        subprocess.run(["cp", "-R", world['path'], world['to']])
+
+
+def set_configs(configs):
+    subprocess.run(["mkdir", "config"])
+    for config in configs.values():
+        subprocess.run(["cp", "-R", config['path'], config['to']])
 
 
 [setup, setup_args_filename] = sys.argv
@@ -49,14 +45,13 @@ args = parse_args(setup_args_filename)
 paper = args['paper']
 mv = args['mv']
 worlds = args['worlds']
+configs = args['configs']
 
-print(paper['filename'])
-download(paper['link'])
-start_server(paper['filename'])
-agree_eula()
-download_plugins(mv)
-set_worlds(worlds)
-# start_server(paper['filename'])
+download(paper['link'], paper['to'])  # download paper server
+set_configs(configs)  # move config files to server dir
+set_worlds(worlds)  # move world files to server dir
+download_plugins(mv)  # download plugins to server dir
+
+start_server(paper['to'])  # start the server
 # set_ops()
 # set_white_list()
-# set_server_props()

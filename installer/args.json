@@ -1,38 +1,60 @@
 {
   "paper": {
     "link": "https://api.papermc.io/v2/projects/paper/versions/1.19/builds/36/downloads/paper-1.19-36.jar",
-    "filename": "paper-1.19-36.jar"
+    "to": "./paper-1.19-36.jar"
   },
   "mv": {
     "core": {
       "link": "https://dev.bukkit.org/projects/multiverse-core/files/3462546/download",
-      "filename": "Multiverse-Core-4.3.1.jar"
+      "to": "./plugins/Multiverse-Core-4.3.1.jar"
     },
     "nether-portals": {
       "link": "https://dev.bukkit.org/projects/multiverse-netherportals/files/3687506/download",
-      "filename": "Multiverse-NetherPortals-4.2.2.jar"
+      "to": "./plugins/Multiverse-NetherPortals-4.2.2.jar"
     },
     "portals": {
       "link": "https://dev.bukkit.org/projects/multiverse-portals/files/3113114/download",
-      "filename": "Multiverse-Portals-4.2.1.jar"
+      "to": "./plugins/Multiverse-Portals-4.2.1.jar"
     },
     "inventory": {
       "link": "https://dev.bukkit.org/projects/multiverse-inventories/files/3687469/download",
-      "filename": "Multiverse-Inventories-4.2.3.jar"
+      "to": "./plugins/Multiverse-Inventories-4.2.3.jar"
     }
   },
-  "worlds": {
+  "worlds":{
     "world": {
       "path": "/Users/mcheng/mc_util/mcscuhk_backup/20220110/old",
-      "name": "world"
+      "to": "./world"
     },
     "world-nether": {
-      "path": "/Users/mcheng/mc_util/mcscuhk_backup/20220110/old_nether",
-      "name": "world_nether"
+      "path":"/Users/mcheng/mc_util/mcscuhk_backup/20220110/old_nether",
+      "to":"./world_nether"
     },
     "world-end": {
-      "path": "/Users/mcheng/mc_util/mcscuhk_backup/20220110/old_the_end",
-      "name": "world_the_end"
+      "path":"/Users/mcheng/mc_util/mcscuhk_backup/20220110/old_the_end",
+      "to":"world_the_end"
+    }
+  },
+  "configs":{
+    "eula": {
+      "path": "/Users/mcheng/repo/mcs-cuhk/config/eula.txt",
+      "to":"./eula.txt"
+    },
+    "bukkit": {
+      "path": "/Users/mcheng/repo/mcs-cuhk/config/bukkit.yml",
+      "to": "./bukkit.yml"
+    },
+    "spigot": {
+      "path": "/Users/mcheng/repo/mcs-cuhk/config/spigot.yml",
+      "to": "./spigot.yml"
+    },
+    "server-properties": {
+      "path": "/Users/mcheng/repo/mcs-cuhk/config/server.properties",
+      "to": "./server.properties"
+    },
+    "paper-world": {
+      "path": "/Users/mcheng/repo/mcs-cuhk/config/paper-world-defaults.yml",
+      "to": "./config/paper-world-defaults.yml"
     }
   }
 }
